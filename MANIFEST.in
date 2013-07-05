@@ -1,4 +1,0 @@
-include README.md
-include setup.py
-
-recursive-include page-search *.py
