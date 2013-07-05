@@ -4,7 +4,7 @@ from distutils.util import convert_path
 from fnmatch import fnmatchcase
 from setuptools import setup, find_packages
 
-version = '0.0.3'
+version = '0.0.4'
 
 standard_exclude = ('*.py', '*.pyc', '*$py.class', '*~', '.*', '*.bak')
 standard_exclude_directories = ('.*', 'CVS', '_darcs', './build',
