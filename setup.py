@@ -75,7 +75,7 @@ This is a Django-powered page search system for basic websites.
 setup(
     name='django-page-search',
     version=version,
-    description="Django-powered website navigation maintenance tool",
+    description="Django-powered website page search tool",
     long_description=LONG_DESCRIPTION,
     classifiers=[
         "Programming Language :: Python",
