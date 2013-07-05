@@ -7,12 +7,18 @@ BSD-licensed menu tools for Django, built by Charles Garrocho <http://charlesgar
 
 django-page-search provides a simple search content in your html pages. The research just does not work in your templates.
 
-Installation & Configuration:
+Installation:
 -----------------------------
 
 1. ``pip install git+git://github.com/CharlesGarrocho/django-page-search``
 
+Configuration:
+-----------------------------
+
 2. Add ``page-search`` to your ``INSTALLED_APPS``
+
+Usage:
+-----------------------------
 
 3. Add ``import page-search`` to your ``views.py`` from your app.
 
@@ -51,7 +57,7 @@ You can also spend the amount of characters for content validation.
 					  </div>
 				{% endblock %}
 
-5. Finally, the html pages may contain some words that you would like to substituílas before the survey, such as: ``{{ SITE_NAME }}`` or ``[at]`` or ``[dot]``. For this, you must pass a dictionary as an argument to the method to search within the dictionary. Inside you will put the key (the word to be searched) and value (the word that will replace).
+6. Finally, the html pages may contain some words that you would like to substituílas before the survey, such as: ``{{ SITE_NAME }}`` or ``[at]`` or ``[dot]``. For this, you must pass a dictionary as an argument to the method to search within the dictionary. Inside you will put the key (the word to be searched) and value (the word that will replace).
 
 				dict_text = {"{{ SITE_NAME }}":"Charles", "[at]":"@", "[dot]":"."}
 				rq = page_search.search(request, replace_text=dict_text)
