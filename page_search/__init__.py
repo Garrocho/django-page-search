@@ -6,35 +6,35 @@ from django.conf import settings
 import os
 import re
 
-def search(request):
+def search(request, quantity_characters = 2):
     try:
-        busca = request.GET['search']
-        busca = busca.encode('utf-8')
+        search_words = request.GET['search']
+        search_words = search_words.encode('utf-8')
     except KeyError:
-        busca = None
-    pesquisa = []
-    conteudo = 'NO'
-    argumentos = 'NO'
-    quantidade = 'NO'
-    if busca is not None:
-        argumentos = 'OK'
-        if len(busca) > 1:
-            quantidade = 'OK'
-            regex_busca_str = r'>([^({{)({{%)(}})]*?{0}[^({{)(%}})(}})]*?)<';  # removi >< da primeira parte e <> da segunda parte
+        search_words = None
+    search_result = []
+    content = 'NO'
+    arg = 'NO'
+    q_c = 'NO'
+    if search_words is not None:
+        arg = 'OK'
+        if len(search_words) > quantity_characters:
+            q_c = 'OK'
+            regex_search_words_str = r'>([^({{)({{%)(}})]*?{0}[^({{)(%}})(}})]*?)<';  # removi >< da primeira parte e <> da segunda parte
             for diretorio in settings.TEMPLATE_DIRS:
                 for arquivo in os.listdir(diretorio):
-                    with open(diretorio + '/' + arquivo) as arquivo_busca:
-                        conteudo_arquivo_busca = arquivo_busca.read()
-                        regex_busca = re.compile(regex_busca_str.format(busca), re.IGNORECASE)
-                        resultados_busca = re.search(regex_busca, conteudo_arquivo_busca)
-                        if resultados_busca is not None and 'template' not in diretorio:
-                            pesquisa.append( {'URL': arquivo.split(".html")[0], 'text': resultados_busca.groups()[0] })
-                            conteudo = 'OK'
+                    with open(diretorio + '/' + arquivo) as arquivo_search_words:
+                        content_arquivo_search_words = arquivo_search_words.read()
+                        regex_search_words = re.compile(regex_search_words_str.format(search_words), re.IGNORECASE)
+                        resultados_search_words = re.search(regex_search_words, content_arquivo_search_words)
+                        if resultados_search_words is not None and 'template' not in diretorio:
+                            search_result.append( {'URL': arquivo.split(".html")[0], 'text': resultados_search_words.groups()[0] })
+                            content = 'OK'
     rq = RequestContext(request, {
-        'pesquisa': pesquisa,
-        'busca': busca,
-        'argumentos': argumentos,
-        'conteudo': conteudo,
-        'quantidade': quantidade
+        'search_result': search_result,
+        'search_words': search_words,
+        'argument': arg,
+        'content': content,
+        'quantity_characters': q_c
     })
     return rq
