@@ -1,11 +1,9 @@
-django-page-search
+Django Page Search
 ==================
 
-Searching for content on the pages of your website
-
-BSD-licensed page search tools for Django, built by Charles Garrocho <http://charlesgarrocho.github.io>
-
-django-page-search provides a simple search content in your html pages. The research just does not work in your templates.
+:Version: 0.0.7
+:Description: Searching for content on the pages of your website. Provides a simple search content in your html pages. The research just does not work in your templates
+:Contributors: Charles Garrocho, Arthur Assunção
 
 Installation:
 -----------------------------
@@ -27,11 +25,11 @@ Usage:
                 rq = page_search.search(request)
     			return render_to_response('search.html', context_instance=rq)
 
-You can also spend the amount of characters for content validation.
+5. You can also spend the amount of characters for content validation.
 
 				rq = page_search.search(request, quantity_characters=4)
 
-5. In their search page:
+6. In their search page:
 
 				{% extends 'base.html' %}
 				  {% block body_page %}
@@ -57,7 +55,7 @@ You can also spend the amount of characters for content validation.
 					  </div>
 				{% endblock %}
 
-6. Finally, the html pages may contain some words that you would like to substituílas before the survey, such as: ``{{ SITE_NAME }}`` or ``[at]`` or ``[dot]``. For this, you must pass a dictionary as an argument to the method to search within the dictionary. Inside you will put the key (the word to be searched) and value (the word that will replace).
+7. Finally, the html pages may contain some words that you would like to substituílas before the survey, such as: ``{{ SITE_NAME }}`` or ``[at]`` or ``[dot]``. For this, you must pass a dictionary as an argument to the method to search within the dictionary. Inside you will put the key (the word to be searched) and value (the word that will replace).
 
 				dict_text = {"{{ SITE_NAME }}":"Charles", "[at]":"@", "[dot]":"."}
 				rq = page_search.search(request, replace_text=dict_text)
