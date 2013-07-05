@@ -17,17 +17,17 @@ Usage:
 
 3. Add ``import page-search`` to your ``views.py`` from your app.
 
-4. call method to search content in ``views.py``:
-
+4. Call method to search content in ``views.py``:
+```py
                 rq = page_search.search(request)
     			return render_to_response('search.html', context_instance=rq)
-
+```
 5. You can also spend the amount of characters for content validation.
-
+```py
 				rq = page_search.search(request, quantity_characters=4)
-
+```
 6. In their search page:
-
+```py
 				{% extends 'base.html' %}
 				  {% block body_page %}
 					  <div>
@@ -51,13 +51,13 @@ Usage:
 					    {% endif %}
 					  </div>
 				{% endblock %}
-
+```
 7. Finally, the html pages may contain some words that you would like to substituílas before the survey, such as: ``{{ SITE_NAME }}`` or ``[at]`` or ``[dot]``. For this, you must pass a dictionary as an argument to the method to search within the dictionary. Inside you will put the key (the word to be searched) and value (the word that will replace).
-
+```py
 				dict_text = {"{{ SITE_NAME }}":"Charles", "[at]":"@", "[dot]":"."}
 				rq = page_search.search(request, replace_text=dict_text)
     			return render_to_response('search.html', context_instance=rq)
-
+```
 Contributors:
 -----------------------------
 
