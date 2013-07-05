@@ -28,13 +28,14 @@ def search(request, quantity_characters = 2):
                         regex_search_words = re.compile(regex_search_words_str.format(search_words), re.IGNORECASE)
                         resultados_search_words = re.search(regex_search_words, content_arquivo_search_words)
                         if resultados_search_words is not None and 'template' not in diretorio:
-                            search_result.append( {'URL': arquivo.split(".html")[0], 'text': resultados_search_words.groups()[0] })
+                            search_result.append( {'URL': arquivo.split(".html")[0], 'TEXT': resultados_search_words.groups()[0] })
                             content = 'OK'
     rq = RequestContext(request, {
         'search_result': search_result,
         'search_words': search_words,
-        'argument': arg,
-        'content': content,
-        'quantity_characters': q_c
+        'argument_check': arg,
+        'content_check': content,
+        'quantity_characters': q_c,
+        'quantity_characters_check': q_c
     })
     return rq
