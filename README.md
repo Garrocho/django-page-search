@@ -16,12 +16,12 @@ Installation & Configuration:
 
 3. Add ``import page-search`` to your ``views.py`` from your app.
 
-4. call method to search content in ``views.py``.:::
+4. call method to search content in ``views.py``:
 
                 rq = page_search.search(request)
     			return render_to_response('search.html', context_instance=rq)
 
-5. in their search page :::
+5. in their search page:
 
 				{% extends 'base.html' %}
 				{% block body_page %}
