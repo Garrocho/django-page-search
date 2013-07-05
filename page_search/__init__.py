@@ -35,7 +35,7 @@ def search(request, quantity_characters = 2):
         'search_words': search_words,
         'argument_check': arg,
         'content_check': content,
-        'quantity_characters': q_c,
+        'quantity_characters': quantity_characters,
         'quantity_characters_check': q_c
     })
     return rq
