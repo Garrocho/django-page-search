@@ -37,5 +37,4 @@ def search(request):
         'conteudo': conteudo,
         'quantidade': quantidade
     })
-    rq['SITE_NOME'] = settings.SITE_NOME
     return rq
