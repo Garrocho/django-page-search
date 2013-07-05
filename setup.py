@@ -92,7 +92,7 @@ setup(
     url='https://github.com/CharlesGarrocho/django-page-search',
     license='BSD',
     packages=find_packages(),
-    package_data=find_package_data("page-search", only_in_packages=False),
+    package_data=find_package_data("page_search", only_in_packages=False),
     include_package_data=True,
     zip_safe=False,
     install_requires=['setuptools'],
