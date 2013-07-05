@@ -1,9 +1,6 @@
 Django Page Search
 ==================
-
-:Version: 0.0.7
-:Description: Searching for content on the pages of your website. Provides a simple search content in your html pages. The research just does not work in your templates
-:Contributors: Charles Garrocho, Arthur Assunção
+Searching for content on the pages of your website. Provides a simple search content in your html pages. The research just does not work in your templates.
 
 Installation:
 -----------------------------
@@ -60,3 +57,9 @@ Usage:
 				dict_text = {"{{ SITE_NAME }}":"Charles", "[at]":"@", "[dot]":"."}
 				rq = page_search.search(request, replace_text=dict_text)
     			return render_to_response('search.html', context_instance=rq)
+
+Contributors:
+-----------------------------
+
+* Charles Garrocho
+* Arthur Assunção
