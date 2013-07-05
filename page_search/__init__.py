@@ -6,7 +6,8 @@ from django.conf import settings
 import os
 import re
 
-def search(request, quantity_characters = 2):
+
+def search(request, quantity_characters=2, replace_text={}):
     try:
         search_words = request.GET['search']
         search_words = search_words.encode('utf-8')
@@ -25,6 +26,7 @@ def search(request, quantity_characters = 2):
                 for arquivo in os.listdir(diretorio):
                     with open(diretorio + '/' + arquivo) as arquivo_search_words:
                         content_arquivo_search_words = arquivo_search_words.read()
+                        content_arquivo_search_words = replaces_constant_text(content_arquivo_search_words, replace_text)
                         regex_search_words = re.compile(regex_search_words_str.format(search_words), re.IGNORECASE)
                         resultados_search_words = re.search(regex_search_words, content_arquivo_search_words)
                         if resultados_search_words is not None and 'template' not in diretorio:
@@ -39,3 +41,10 @@ def search(request, quantity_characters = 2):
         'quantity_characters_check': q_c
     })
     return rq
+
+
+def replaces_constant_text(text, replace_text):
+    for key in replace_text:
+        if key in text:
+            text = text.replace(key, replace_text[key])
+    return text
