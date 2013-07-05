@@ -45,7 +45,6 @@ def search(request, quantity_characters=2, replace_text={}):
 
 def replaces_constant_text(text, replace_text):
     for key in replace_text:
-        print key
         if key in text:
             text = text.replace(key, replace_text[key])
     return text
