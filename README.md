@@ -3,7 +3,7 @@ django-page-search
 
 Searching for content on the pages of your website
 
-BSD-licensed menu tools for Django, built by Charles Garrocho <http://charlesgarrocho.github.io>
+BSD-licensed page search tools for Django, built by Charles Garrocho <http://charlesgarrocho.github.io>
 
 django-page-search provides a simple search content in your html pages. The research just does not work in your templates.
 
