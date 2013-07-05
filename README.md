@@ -21,28 +21,34 @@ Installation & Configuration:
                 rq = page_search.search(request)
     			return render_to_response('search.html', context_instance=rq)
 
-5. in their search page:
+5. In their search page:
 
 				{% extends 'base.html' %}
-				{% block body_page %}
-				<div>
-				  {% if quantity_characters_check != "OK" %}
-				      <h3>The search must have at least {{ quantity_characters }} characters.</h3>
-				  {% elif args_check != "OK" %}
-				      <h3>Fill in the field with the text being searched...</h3>
-				  {% elif content_check != "OK" %}
-				      <h3>No results for search for: {{ search_words }} </h3>
-				  {% else %}
-				      <h3>Search Results for: {{ search_words }} </h3>
-				      <br />
-
-				      {% for item in search_result %}
-				        {% if item.TEXT.strip|striptags|truncatewords:50 %}
-				        <div class="well well-transparent">
-				          <a class="lead" href="{{ item.URL }}"> {{ item.TEXT.strip|striptags|truncatewords:50 }}</a>
-				        </div>
-				        {% endif %}
-				      {% endfor %}
-				  {% endif %}
-				</div>
+				  {% block body_page %}
+					  <div>
+					    {% if quantity_characters_check != "OK" %}
+					        <h3>The search must have at least {{ quantity_characters }} characters.</h3>
+					    {% elif argument_check != "OK" %}
+					        <h3>Fill in the field with the text being searched...</h3>
+					    {% elif content_check != "OK" %}
+					        <h3>No results for search for: {{ search_words }} </h3>
+					    {% else %}
+					        <h3>Search Results for: {{ search_words }} </h3>
+					        <br/>
+					        {% for item in search_result %}
+					          {% if item.TEXT.strip|striptags|truncatewords:50 %}
+					            <div>
+					              <a class="lead" href="{{ item.URL }}"> {{ item.TEXT.strip|striptags|truncatewords:50 }}</a>
+					            </div>
+					            </br>
+					          {% endif %}
+					        {% endfor %}
+					    {% endif %}
+					  </div>
 				{% endblock %}
+
+5. Finally, the html pages may contain some words that you would like to substituílas before the survey, such as: ``{{ SITE_NAME }}`` or ``[at]`` or ``[dot]``. For this, you must pass a dictionary as an argument to the method to search within the dictionary. Inside you will put the key (the word to be searched) and value (the word that will replace).
+
+				dict_text = {"{{ SITE_NAME }}":"Charles", "[at]":"@", "[dor]":"."}
+				rq = page_search.search(request, replace_text=dict_text)
+    			return render_to_response('search.html', context_instance=rq)
