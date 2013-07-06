@@ -49,6 +49,9 @@ def search(request, quantity_characters=2, replace_text={}):
 
 
 def replaces_constant_text(text, replace_text):
+    """
+    Replaces all keywords dictionary by values.
+    """
     for key in replace_text:
         if key in text:
             text = text.replace(key, replace_text[key])
