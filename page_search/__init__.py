@@ -8,6 +8,11 @@ import re
 
 
 def search(request, quantity_characters=2, replace_text={}):
+    """
+    Perform a search for content in accordance with the word passed as
+    argument in the request. You can set the minimum number of characters
+    and a dictionary of words to be replaced before the search.
+    """
     try:
         search_words = request.GET['search']
         search_words = search_words.encode('utf-8')
