@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import EmailMessage
 from django.conf import settings
+import time
 import os
 import re
 
@@ -13,6 +14,7 @@ def search(request, quantity_characters=2, replace_text={}):
     argument in the request. You can set the minimum number of characters
     and a dictionary of words to be replaced before the search.
     """
+    init_time = time.time()
     try:
         search_words = request.GET['search']
         search_words = search_words.encode('utf-8')
@@ -40,6 +42,7 @@ def search(request, quantity_characters=2, replace_text={}):
     rq = RequestContext(request, {
         'search_result': search_result,
         'search_result_lenght': len(search_result),
+        'search_result_time': diff_time(init_time, time.time()),
         'search_words': search_words,
         'argument_check': arg,
         'content_check': content,
@@ -63,6 +66,5 @@ def diff_time(init_time, end_time):
     """
     Return the diff in init_time and end_time.
     """
-    init_secunds = (((end_time.second + (end_time.minute*60)) * 60) + end_time.microsecond)
-    end_secunds  = (((init_time.second + (init_time.minute*60)) * 60) + init_time.microsecond)
-    return end_time - init_time
+    diff_time = end_time - init_time
+    return "%.3f" % (diff_time)
