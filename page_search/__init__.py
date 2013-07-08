@@ -57,3 +57,12 @@ def replaces_constant_text(text, replace_text):
         if key in text:
             text = text.replace(key, replace_text[key])
     return text
+
+
+def diff_time(init_time, end_time):
+    """
+    Return the diff in init_time and end_time.
+    """
+    init_secunds = (((end_time.second + (end_time.minute*60)) * 60) + end_time.microsecond)
+    end_secunds  = (((init_time.second + (init_time.minute*60)) * 60) + init_time.microsecond)
+    return end_time - init_time
