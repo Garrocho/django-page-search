@@ -26,7 +26,7 @@ def search(request, quantity_characters=2, replace_text={}):
         arg = 'OK'
         if len(search_words) > quantity_characters:
             q_c = 'OK'
-            regex_search_words_str = r'>([^({{)({{%)(}})]*?{0}[^({{)(%}})(}})]*?)<';  # removi >< da primeira parte e <> da segunda parte
+            regex_search_words_str = r'>([^({{)({{%)(}})]*?{0}[^({{)(%}})(}})]*?)<';
             for diretorio in settings.TEMPLATE_DIRS:
                 for arquivo in os.listdir(diretorio):
                     with open(diretorio + '/' + arquivo) as arquivo_search_words:
@@ -39,6 +39,7 @@ def search(request, quantity_characters=2, replace_text={}):
                             content = 'OK'
     rq = RequestContext(request, {
         'search_result': search_result,
+        'search_result_lenght': len(search_result),
         'search_words': search_words,
         'argument_check': arg,
         'content_check': content,
