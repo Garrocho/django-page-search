@@ -26,7 +26,7 @@ def search(request, quantity_characters=2, replace_text={}):
     q_c = 'NO'
     if search_words is not None:
         arg = 'OK'
-        if len(search_words) > quantity_characters:
+        if len(search_words) >= quantity_characters:
             q_c = 'OK'
             regex_search_words_str = r'>([^({{)({{%)(}})]*?{0}[^({{)(%}})(}})]*?)<';
             for diretorio in settings.TEMPLATE_DIRS:
