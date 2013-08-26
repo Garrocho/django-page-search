@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+# @author: Charles Tim Batista Garrocho
+# @contact: charles.garrocho@gmail.com
+# @copyright: (C) 2013 Python Software Open Source
+
+"""
+This module is the application installation.
+"""
+
 import os
 import sys
 from distutils.util import convert_path
