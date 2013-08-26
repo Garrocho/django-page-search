@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+# @author: Charles Tim Batista Garrocho
+# @contact: charles.garrocho@gmail.com
+# @copyright: (C) 2013 Python Software Open Source
+
+"""
+This is the module of the application package.
+"""
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
